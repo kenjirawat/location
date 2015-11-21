@@ -1,0 +1,27 @@
+{
+  "name": "apiFB",
+  "version": "0.0.0",
+  "description": "passportJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kingkong64/apiFB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kingkong64/apiFB/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "fbgraph": "^1.1.0",
+    "mongoose": "^4.2.7",
+    "mongoose-findorcreate": "^0.1.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="todoApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="todo.js"></script>
+
+  </head>
+  <body>
+  <a href="/auth/facebook">Login with Facebook</a>
+
+    <div ng-controller="TodoListController as todoList">
+      <img ng-src={{photo}}> {{name}}
+
+      <form ng-submit="todoList.post()">
+        <input type="text" ng-model="text">
+        <input type="submit">
+
+      </form>
+
+    </div>
+  </body>
+</html>
