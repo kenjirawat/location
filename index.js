@@ -14,7 +14,7 @@ var graph = require('fbgraph')
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   ObjectId = Schema.ObjectId
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://localhost/Mylocation')
 
 var findOrCreate = require('mongoose-findorcreate')
 var ClickSchema = new Schema({ name: String })
@@ -44,15 +44,16 @@ passport.use(new FacebookStrategy({
     app.get('/profile', function (req, res) {
       res.send(profile)
     })
-
   }
 ))
 
-app.post('/post', jsonParser, function (req, res) { /*
+app.post('/post', jsonParser, function (req, res) { 
+  // Post Facebook
   graph.post('me/feed', req.body, function (err, res) {
     // returns the post id
     console.log(res)
-  })*/
+  })
+
   res.send('Success')
 })
 // Redirect the user to Facebook for authentication.  When complete,
@@ -65,8 +66,11 @@ app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'publish_ac
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',
-  failureRedirect: '/login' }))
+  passport.authenticate('facebook', { 
+  successRedirect: '/',
+  failureRedirect: '/login' 
+
+}))
 
 var server = app.listen(3000, function () {
   var host = server.address().address

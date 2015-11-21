@@ -15,6 +15,7 @@ angular.module('todoApp', [])
     todoList.post = function () {
       value = {message: $scope.text}
       $http.post('/post', value).then(function (response) {
+        window.location = "location.html"
         console.log(response)
       }, function (response) {
         console.log(response)
