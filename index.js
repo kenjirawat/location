@@ -5,6 +5,9 @@ var jsonParser = bodyParser.json()
 var passport = require('passport'),
   FacebookStrategy = require('passport-facebook').Strategy
 
+var http = require('http').Server(app)
+var io = require('socket.io')(http)
+
 app.use(passport.initialize())
 
 app.use(express.static('public'))
@@ -71,6 +74,17 @@ app.get('/auth/facebook/callback',
   failureRedirect: '/login' 
 
 }))
+
+////////////////////// socket.io///////////////////////////////
+var io = require('socket.io').listen(server);
+ 
+// เมื่อมี client เข้ามาเชื่อมต่อให้ทำอะไร?
+io.on('connection', function(socket) {
+    // แสดงข้อความ "a user connected" ออกมาทาง console
+    console.log('a user connected')
+})
+
+//////////////////////////////////////////////////////////
 
 var server = app.listen(3000, function () {
   var host = server.address().address
