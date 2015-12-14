@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>My-Location</title>
+    
+        <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+
+    <html ng-app="ionicApp"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+  <title>Ionic Template</title>
+  <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+  <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  <script src="http://maps.google.com/maps/api/js"></script>
+  <script src="http://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
+
+  <script src="https://cdn.socket.io/socket.io-1.3.3.js"></script>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="js/index.js"></script>
+
+
+  </head>
+  <script>
+          var name = prompt('ระบุชื่อที่จะแสดงใน map','')  // alet เก็บชื่อ ไว้ใน name
+  </script>
+
+  <body ng-controller="MarkerRemoveCtrl">
+    <ion-header-bar class="bar-stable">
+      <button class="button button-icon ion-pinpoint" ng-click="centerOnMe()"></button>
+      <h1 class="title">My Location</h1>
+    </ion-header-bar>
+    <ion-content scroll="false">
+      <div class="mapWrap"  data-tap-disabled="true">
+        <map center="14.1590063, 101.34507699999999" zoom="15"> 
+          <!-- ngRepeat: pos in positions -->
+          <marker ng-repeat=" pos in positions" position="{{pos.lat}},{{pos.lng}}"  title= ></marker>
+        </map> 
+      </div>
+    </ion-content>
+
+    <script>
+
+          var socket = io()
+
+            // get element ต่างๆ มารอไว้ก่อน
+            // var loc = "Hellow {{loc.lat}} "
+
+            // เมื่อเชื่อมต่อสำเร็จ ให้ส่งข้อความไปบอก server
+            socket.emit('chat', {
+                User : name   // ทำการส่งชื่อ ไปใน ท้อ chat
+            })
+            // socket.on('chat'function(messag){
+            //     text(messag)
+            // })
+            
+            
+
+        </script>
+
+
+
+  </body>
+
+</html>
